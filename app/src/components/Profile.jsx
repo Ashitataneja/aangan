@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useVillage } from '../state/VillageContext';
 import Screen from './Screen';
+import WaveDivider from './WaveDivider';
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export default function Profile() {
         </button>
         <p className="text-sm font-medium text-[#5b4636]">Your aangan</p>
       </div>
+      <WaveDivider color="#6B3FA0" className="mt-3" />
 
       <div className="mt-8 flex flex-col items-center px-6">
         <div className="relative flex flex-col items-center">
@@ -28,8 +30,8 @@ export default function Profile() {
         <p className="mt-3 font-display text-lg font-bold text-[#4a3527]">{user.name}</p>
         <p className="text-xs text-[#8a7767]">{user.age} · {user.location}</p>
 
-        <div className="mt-8 w-full max-w-xs rounded-[28px] bg-white/70 p-4 shadow-warm">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-[#a08f78]">
+        <div className="mt-8 w-full max-w-xs rounded-[28px] border-2 border-dashed border-terracotta/25 bg-white/70 p-4 shadow-warm">
+          <p className="mb-3 font-display text-xs font-bold uppercase tracking-wide text-purple">
             Your village
           </p>
           {family.map((m, i) => {

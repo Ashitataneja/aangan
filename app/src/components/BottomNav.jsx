@@ -27,20 +27,20 @@ export default function BottomNav() {
               {active && (
                 <motion.div
                   layoutId="nav-pill"
-                  className="absolute inset-0 rounded-2xl bg-saffron/20"
+                  className="sticker-sm absolute inset-0 rounded-2xl bg-gradient-to-b from-saffron to-[#E8901A]"
                   transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                 />
               )}
               <span
                 className={`relative text-xl transition-transform ${
-                  active ? 'scale-110' : 'opacity-70'
+                  active ? 'scale-110' : 'opacity-60'
                 }`}
               >
                 {item.emoji}
               </span>
               <span
-                className={`relative text-[10px] font-medium ${
-                  active ? 'text-terracotta' : 'text-[#8a7767]'
+                className={`relative font-display text-[10px] font-bold ${
+                  active ? 'text-white' : 'text-[#8a7767]'
                 }`}
               >
                 {item.label}

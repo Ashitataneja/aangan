@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useVillage } from '../state/VillageContext';
 import { deitiesByDay, getToday } from '../data/family';
 import Screen from './Screen';
+import WaveDivider from './WaveDivider';
 
 const PETALS = [
   { emoji: '🌼', left: '18%', delay: 0, drift: '18px' },
@@ -57,6 +58,7 @@ export default function MorningFlow() {
         </button>
         <p className="text-sm font-medium text-white/90">Back to the village</p>
       </div>
+      <WaveDivider color="#F5A623" className="relative mt-3" />
 
       <AnimatePresence mode="wait">
         {!shared ? (

@@ -3,45 +3,55 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useVillage } from '../state/VillageContext';
 import Screen from './Screen';
+import WaveDivider from './WaveDivider';
 
 const USER_POS = { top: 91, left: 50 };
+
+// Hut base color is driven by emotional-proximity tier (circle) — the
+// closer the relationship, the warmer/richer the color. Garden state then
+// desaturates that color as connection fades, independent of the aura ring.
+const circleHues = {
+  inner: 'from-[#FBCE72] to-[#E8A317]',
+  middle: 'from-[#E2946B] to-[#C17B5A]',
+  outer: 'from-[#BCA3D6] to-[#8A6BAE]',
+};
 
 const gardenStyles = {
   lush: {
     flowers: '🌸🌿🌼',
     label: 'blooming',
-    pillBg: 'bg-deepgreen/20',
+    pillBg: 'bg-deepgreen/25',
     bounce: true,
-    hut: 'from-[#F6E3C4] to-[#E9C99A]',
-    aura: 'shadow-[0_0_0_7px_rgba(212,160,23,0.16)]',
+    filter: 'none',
+    aura: 'shadow-[0_0_0_7px_rgba(212,160,23,0.22)]',
     pathStroke: '#C17B5A',
-    pathOpacity: 0.6,
+    pathOpacity: 0.65,
     pathDash: undefined,
-    pathWidth: 0.7,
+    pathWidth: 0.8,
   },
   wilting: {
     flowers: '🥀🍂',
     label: 'fading',
-    pillBg: 'bg-[#9C9280]/30',
+    pillBg: 'bg-[#9C9280]/35',
     bounce: false,
-    hut: 'from-[#E4DAC3] to-[#CBBD9E]',
-    aura: 'shadow-[0_0_0_6px_rgba(140,130,110,0.22)]',
+    filter: 'saturate(0.5) brightness(0.96)',
+    aura: 'shadow-[0_0_0_6px_rgba(140,130,110,0.26)]',
     pathStroke: '#A08F78',
-    pathOpacity: 0.5,
+    pathOpacity: 0.55,
     pathDash: '2.2 2.4',
-    pathWidth: 0.55,
+    pathWidth: 0.6,
   },
   fading: {
     flowers: '🍂',
     label: 'thirsty',
-    pillBg: 'bg-[#B7AE9C]/30',
+    pillBg: 'bg-[#B7AE9C]/35',
     bounce: false,
-    hut: 'from-[#DED4BE] to-[#C4B89C]',
-    aura: 'shadow-[0_0_0_5px_rgba(150,140,120,0.16)]',
+    filter: 'saturate(0.3) brightness(0.92)',
+    aura: 'shadow-[0_0_0_5px_rgba(150,140,120,0.2)]',
     pathStroke: '#B7AE9C',
-    pathOpacity: 0.4,
+    pathOpacity: 0.45,
     pathDash: '1 3.2',
-    pathWidth: 0.45,
+    pathWidth: 0.5,
   },
 };
 
@@ -61,6 +71,7 @@ function Garden({ state }) {
 
 function HouseNode({ member, onTap }) {
   const g = gardenStyles[member.gardenState] ?? gardenStyles.lush;
+  const hue = circleHues[member.circle] ?? circleHues.middle;
   return (
     <button
       onClick={() => onTap(member)}
@@ -72,9 +83,10 @@ function HouseNode({ member, onTap }) {
           <span className="absolute -right-1 -top-1 z-10 h-2.5 w-2.5 animate-twinkle rounded-full bg-gold ring-2 ring-cream" />
         )}
         <div
-          className={`sticker flex h-14 w-14 items-center justify-center bg-gradient-to-b text-2xl ${g.hut} ${g.aura} ${
+          className={`sticker flex h-14 w-14 items-center justify-center bg-gradient-to-b text-2xl ${hue} ${g.aura} ${
             member.blob ?? 'blob-a'
           }`}
+          style={{ filter: g.filter }}
         >
           {member.houseEmoji}
         </div>
@@ -186,8 +198,11 @@ export default function VillageHome() {
           ☁️
         </div>
 
+        {/* hand-drawn wave divider */}
+        <WaveDivider className="mt-3" />
+
         {/* village map */}
-        <div className="relative mx-3 mt-4 h-[min(68vh,620px)] min-h-[480px] overflow-hidden rounded-[32px] shadow-[inset_0_2px_10px_rgba(58,46,39,0.12)]">
+        <div className="relative mx-3 mt-2 h-[min(68vh,620px)] min-h-[480px] overflow-hidden rounded-[32px] shadow-[inset_0_2px_10px_rgba(58,46,39,0.12)]">
           {/* ground texture */}
           <div
             className="grain absolute inset-0"
@@ -206,7 +221,7 @@ export default function VillageHome() {
           >
             <div className="relative flex flex-col items-center">
               <div
-                className={`sticker arch-shape flex h-16 w-16 items-center justify-center bg-gradient-to-b from-[#FCE7B8] to-[#F0BE6A] text-3xl ${
+                className={`sticker arch-shape flex h-16 w-16 items-center justify-center bg-gradient-to-b from-saffron to-gold text-3xl ${
                   timeOfDay === 'morning' ? 'animate-pulse-glow' : ''
                 }`}
               >

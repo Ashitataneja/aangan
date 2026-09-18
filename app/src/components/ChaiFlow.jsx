@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useVillage } from '../state/VillageContext';
 import Screen from './Screen';
+import WaveDivider from './WaveDivider';
 
 const AVATARS = { sunita: '🧕🏽', priya: '👩🏽', rahul: '🧑🏽', papa: '👴🏽', meena: '👵🏽', chachi: '👩🏽‍🦳' };
 
@@ -67,6 +68,7 @@ export default function ChaiFlow() {
         </button>
         <p className="text-sm font-medium text-[#5b4636]">Chowk · village square</p>
       </div>
+      <WaveDivider color="#F5A623" className="relative mt-3" />
 
       <AnimatePresence mode="wait">
         {step === 'kettle' && (

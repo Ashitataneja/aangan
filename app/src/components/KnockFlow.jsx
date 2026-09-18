@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useVillage } from '../state/VillageContext';
 import Screen from './Screen';
+import WaveDivider from './WaveDivider';
 
 function useTimer(active) {
   const [seconds, setSeconds] = useState(0);
@@ -58,6 +59,7 @@ export default function KnockFlow() {
           {member.name}'s house · {member.location}
         </p>
       </div>
+      <WaveDivider color="#C17B5A" className="relative mt-3" />
 
       <AnimatePresence mode="wait">
         {(step === 'exterior' || step === 'knocking') && (
