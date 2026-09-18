@@ -15,13 +15,40 @@ Aangan is a shared imaginary village where your family is always nearby. Each fa
 
 ## Stack
 
-React + Vite, Tailwind CSS, Framer Motion, React Router. All state lives in React context (`src/state/VillageContext.jsx`) — no backend, no real calls, everything simulated for the demo.
+React + Vite, Tailwind CSS, Framer Motion, React Router. All state lives in React context (`app/src/state/VillageContext.jsx`) — no backend, no real calls, everything simulated for the demo.
+
+## Repo layout
+
+The Vite project lives in `app/`. The repo **root** holds the production build (`index.html`, `404.html`, `assets/`) because GitHub Pages for this repo is configured to deploy straight from this branch's root — there's no separate build step on GitHub's side, so the built files have to already be committed there.
+
+```
+app/        Vite source — edit here
+index.html  built output, served by GitHub Pages
+assets/     built output, served by GitHub Pages
+404.html    copy of index.html, so client-side routes survive a hard refresh
+```
 
 ## Running locally
 
 ```bash
+cd app
 npm install
 npm run dev
 ```
 
+Vite is configured with `base: '/aangan/'` to match the GitHub Pages path, so the dev server serves the app at `http://localhost:5173/aangan/` (not the bare root).
+
 Best viewed at a 375–430px mobile viewport, though it's readable on desktop too.
+
+## Deploying
+
+Whenever `app/src` changes, rebuild and refresh the root copy, then commit both:
+
+```bash
+./deploy.sh
+git add -A
+git commit -m "Rebuild for Pages"
+git push
+```
+
+Live at <https://ashitataneja.github.io/aangan/>.
