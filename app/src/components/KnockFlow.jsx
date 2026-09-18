@@ -67,7 +67,7 @@ export default function KnockFlow() {
             className="mt-4 flex flex-col items-center px-6"
           >
             <div
-              className={`flex h-24 w-32 items-center justify-center rounded-full text-4xl ${
+              className={`blob-b flex h-24 w-32 items-center justify-center text-4xl ${
                 isFadingGarden ? 'bg-[#B7AE9C]/40' : 'bg-deepgreen/20'
               }`}
             >
@@ -180,7 +180,7 @@ export default function KnockFlow() {
               initial={{ scale: 0.7 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', stiffness: 220, damping: 14 }}
-              className="flex h-28 w-36 items-center justify-center rounded-full bg-deepgreen/20 text-5xl animate-bob"
+              className="blob-a flex h-28 w-36 items-center justify-center bg-deepgreen/20 text-5xl animate-bob"
             >
               🌸🌿🌼
             </motion.div>
