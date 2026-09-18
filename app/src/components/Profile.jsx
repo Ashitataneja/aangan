@@ -20,7 +20,7 @@ export default function Profile() {
 
       <div className="mt-8 flex flex-col items-center px-6">
         <div className="relative flex flex-col items-center">
-          <div className="blob-c flex h-24 w-24 items-center justify-center bg-gradient-to-b from-[#F6E3C4] to-terracotta/40 text-5xl shadow-warm ring-2 ring-white/60">
+          <div className="sticker blob-c flex h-24 w-24 items-center justify-center bg-gradient-to-b from-[#F6E3C4] to-terracotta/40 text-5xl">
             🧕🏽
           </div>
           <span className="-mt-1.5 h-2.5 w-14 rounded-full ground-shadow" />
@@ -38,7 +38,7 @@ export default function Profile() {
               <div key={m.id} className="flex items-center justify-between py-2 text-sm">
                 <span className="flex items-center gap-2.5 text-[#5b4636]">
                   <span
-                    className={`${blobs[i % blobs.length]} flex h-8 w-8 items-center justify-center bg-gradient-to-b from-white to-[#EAD9BC] text-sm`}
+                    className={`sticker-sm ${blobs[i % blobs.length]} flex h-8 w-8 items-center justify-center bg-gradient-to-b from-white to-[#EAD9BC] text-sm`}
                   >
                     {m.houseEmoji}
                   </span>

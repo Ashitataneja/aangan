@@ -77,7 +77,7 @@ export default function ChaiFlow() {
             exit={{ opacity: 0 }}
             className="mt-14 flex flex-col items-center px-6"
           >
-            <div className="relative flex h-32 w-32 items-center justify-center rounded-full bg-saffron/20">
+            <div className="sticker relative flex h-32 w-32 items-center justify-center rounded-full bg-saffron/20">
               <span className="text-6xl">🫖</span>
               <span className="absolute -top-2 left-9 animate-steam text-2xl">〰️</span>
               <span
@@ -99,7 +99,7 @@ export default function ChaiFlow() {
             exit={{ opacity: 0 }}
             className="mt-6 flex flex-col items-center px-6"
           >
-            <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-saffron/25 animate-pulse-glow-soft">
+            <div className="sticker relative flex h-24 w-24 items-center justify-center rounded-full bg-saffron/25 animate-pulse-glow-soft">
               <span className="text-5xl">🫖</span>
             </div>
             <p className="mt-4 max-w-xs text-center text-sm font-medium text-[#4a3527]">
@@ -113,7 +113,7 @@ export default function ChaiFlow() {
                 return (
                   <div key={m.id} className="flex flex-col items-center gap-1">
                     <div
-                      className={`${blobs[i % blobs.length]} flex h-10 w-10 items-center justify-center text-lg ${
+                      className={`sticker-sm ${blobs[i % blobs.length]} flex h-10 w-10 items-center justify-center text-lg ${
                         isPresent ? 'bg-gold/25 animate-pulse-glow-soft' : 'bg-white/60 opacity-60'
                       }`}
                     >
@@ -221,7 +221,7 @@ export default function ChaiFlow() {
             animate={{ opacity: 1, y: 0 }}
             className="mt-14 flex flex-col items-center px-6"
           >
-            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-saffron/20 text-5xl animate-pulse-glow-soft">
+            <div className="sticker flex h-24 w-24 items-center justify-center rounded-full bg-saffron/20 text-5xl animate-pulse-glow-soft">
               🫖
             </div>
             <p className="mt-6 max-w-xs text-center text-sm font-medium text-[#4a3527]">

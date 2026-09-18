@@ -84,7 +84,7 @@ export default function MorningFlow() {
                 style={{ boxShadow: `0 0 60px 20px ${deity.color}55` }}
               />
               <div
-                className="relative flex h-48 w-48 items-center justify-center rounded-full text-8xl shadow-glow ring-4 ring-white/30"
+                className="sticker relative flex h-48 w-48 items-center justify-center rounded-full text-8xl shadow-glow"
                 style={{ background: `radial-gradient(circle, ${deity.color}33, #FDF6EC 70%)` }}
               >
                 {deity.emoji}
@@ -135,7 +135,7 @@ export default function MorningFlow() {
                   className="flex flex-col items-center gap-1"
                 >
                   <div
-                    className={`${blobs[i % blobs.length]} flex h-14 w-14 items-center justify-center bg-gradient-to-b from-white/90 to-white/60 text-2xl shadow-warm`}
+                    className={`sticker-sm ${blobs[i % blobs.length]} flex h-14 w-14 items-center justify-center bg-gradient-to-b from-white/90 to-white/60 text-2xl`}
                   >
                     {m.houseEmoji}
                   </div>

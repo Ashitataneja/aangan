@@ -69,7 +69,7 @@ export default function KnockFlow() {
             className="mt-4 flex flex-col items-center px-6"
           >
             <div
-              className={`blob-b flex h-24 w-32 items-center justify-center text-4xl ${
+              className={`sticker blob-b flex h-24 w-32 items-center justify-center text-4xl ${
                 isFadingGarden ? 'bg-[#B7AE9C]/40' : 'bg-deepgreen/20'
               }`}
             >
@@ -84,7 +84,7 @@ export default function KnockFlow() {
             <div className="relative mt-8">
               <button
                 onClick={() => setStep('knocking')}
-                className="relative flex h-40 w-32 flex-col items-center justify-end rounded-t-[60px] rounded-b-xl bg-terracotta/80 pb-6 shadow-warm active:scale-95"
+                className="sticker relative flex h-40 w-32 flex-col items-center justify-end rounded-t-[60px] rounded-b-xl bg-gradient-to-b from-[#D68F68] to-terracotta pb-6 active:scale-95"
               >
                 <span className="absolute top-8 text-4xl">🚪</span>
                 {step === 'knocking' && (
@@ -112,7 +112,7 @@ export default function KnockFlow() {
             exit={{ opacity: 0 }}
             className="mt-16 flex flex-col items-center px-6"
           >
-            <div className="blob-b relative flex h-32 w-32 items-center justify-center bg-terracotta/20 animate-pulse-glow-soft">
+            <div className="sticker blob-b relative flex h-32 w-32 items-center justify-center bg-terracotta/20 animate-pulse-glow-soft">
               <span className="text-6xl">🚪</span>
             </div>
             <p className="mt-6 text-center text-sm font-medium text-[#5b4636]">
@@ -200,7 +200,7 @@ export default function KnockFlow() {
               initial={{ scale: 0.7 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', stiffness: 220, damping: 14 }}
-              className="blob-a flex h-28 w-36 items-center justify-center bg-deepgreen/20 text-5xl animate-bob"
+              className="sticker blob-a flex h-28 w-36 items-center justify-center bg-deepgreen/20 text-5xl animate-bob"
             >
               🌸🌿🌼
             </motion.div>

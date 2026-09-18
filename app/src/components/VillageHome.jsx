@@ -72,7 +72,7 @@ function HouseNode({ member, onTap }) {
           <span className="absolute -right-1 -top-1 z-10 h-2.5 w-2.5 animate-twinkle rounded-full bg-gold ring-2 ring-cream" />
         )}
         <div
-          className={`flex h-14 w-14 items-center justify-center bg-gradient-to-b text-2xl ${g.hut} ${g.aura} ${
+          className={`sticker flex h-14 w-14 items-center justify-center bg-gradient-to-b text-2xl ${g.hut} ${g.aura} ${
             member.blob ?? 'blob-a'
           }`}
         >
@@ -81,7 +81,7 @@ function HouseNode({ member, onTap }) {
         <span className="-mt-1.5 h-2 w-9 rounded-full ground-shadow" />
       </div>
       <Garden state={member.gardenState} />
-      <span className="max-w-[72px] truncate font-display text-[11px] font-semibold text-[#5b4636]">
+      <span className="max-w-[72px] truncate font-display text-xs font-bold text-[#4a3527]">
         {member.name}
       </span>
     </button>
@@ -187,10 +187,10 @@ export default function VillageHome() {
         </div>
 
         {/* village map */}
-        <div className="relative mx-3 mt-4 h-[min(64vh,580px)] min-h-[460px] overflow-hidden rounded-[32px]">
+        <div className="relative mx-3 mt-4 h-[min(68vh,620px)] min-h-[480px] overflow-hidden rounded-[32px] shadow-[inset_0_2px_10px_rgba(58,46,39,0.12)]">
           {/* ground texture */}
           <div
-            className="absolute inset-0"
+            className="grain absolute inset-0"
             style={{
               background:
                 'radial-gradient(ellipse 60% 40% at 30% 20%, rgba(45,80,22,0.10), transparent 60%), radial-gradient(ellipse 55% 45% at 80% 75%, rgba(212,160,23,0.12), transparent 60%), radial-gradient(ellipse 70% 50% at 50% 95%, rgba(193,123,90,0.14), transparent 65%), #EFE3CE',
@@ -206,7 +206,7 @@ export default function VillageHome() {
           >
             <div className="relative flex flex-col items-center">
               <div
-                className={`arch-shape flex h-16 w-16 items-center justify-center bg-gradient-to-b from-[#FCE7B8] to-[#F0BE6A] text-3xl shadow-warm ${
+                className={`sticker arch-shape flex h-16 w-16 items-center justify-center bg-gradient-to-b from-[#FCE7B8] to-[#F0BE6A] text-3xl ${
                   timeOfDay === 'morning' ? 'animate-pulse-glow' : ''
                 }`}
               >
@@ -251,7 +251,7 @@ export default function VillageHome() {
           >
             <div className="relative flex flex-col items-center">
               <div
-                className={`flex h-12 w-12 items-center justify-center rounded-full text-xl shadow-warm ${
+                className={`sticker-sm flex h-12 w-12 items-center justify-center rounded-full text-xl ${
                   chowk.kettleOn
                     ? 'bg-gradient-to-b from-saffron/40 to-terracotta/30 animate-pulse-glow-soft'
                     : 'bg-gradient-to-b from-white/80 to-[#EAD9BC]'
@@ -272,7 +272,7 @@ export default function VillageHome() {
             style={{ top: `${USER_POS.top}%`, left: `${USER_POS.left}%` }}
           >
             <div className="relative flex flex-col items-center">
-              <div className="blob-c flex h-[4.5rem] w-[4.5rem] items-center justify-center bg-gradient-to-b from-[#E9A57C] to-terracotta text-3xl shadow-warm ring-2 ring-white/60">
+              <div className="sticker blob-c flex h-[4.5rem] w-[4.5rem] items-center justify-center bg-gradient-to-b from-[#E9A57C] to-terracotta text-3xl">
                 🏡
               </div>
               <span className="-mt-1.5 h-2.5 w-12 rounded-full ground-shadow" />
