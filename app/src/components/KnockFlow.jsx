@@ -44,8 +44,10 @@ export default function KnockFlow() {
   const isFadingGarden = member.gardenState !== 'lush';
 
   return (
-    <Screen className="bg-gradient-to-b from-[#EFE3CE] to-cream">
-      <div className="flex items-center gap-3 px-5 pt-6">
+    <Screen className="relative overflow-hidden bg-gradient-to-b from-[#F6E7C8] via-[#EFE3CE] to-cream">
+      <span className="pointer-events-none absolute left-4 top-20 text-2xl opacity-40">🌳</span>
+      <span className="pointer-events-none absolute right-6 top-32 text-xl opacity-30">🌿</span>
+      <div className="relative flex items-center gap-3 px-5 pt-6">
         <button
           onClick={() => navigate('/')}
           className="flex h-9 w-9 items-center justify-center rounded-full bg-white/70 text-[#5b4636] shadow-sm"
@@ -110,7 +112,7 @@ export default function KnockFlow() {
             exit={{ opacity: 0 }}
             className="mt-16 flex flex-col items-center px-6"
           >
-            <div className="relative flex h-32 w-32 items-center justify-center rounded-full bg-terracotta/20 animate-pulse-glow-soft">
+            <div className="blob-b relative flex h-32 w-32 items-center justify-center bg-terracotta/20 animate-pulse-glow-soft">
               <span className="text-6xl">🚪</span>
             </div>
             <p className="mt-6 text-center text-sm font-medium text-[#5b4636]">
@@ -128,20 +130,38 @@ export default function KnockFlow() {
             animate={{ opacity: 1, scale: 1 }}
             className="mt-4 flex flex-col items-center px-6"
           >
-            <div className="relative flex h-72 w-full max-w-xs items-center justify-center rounded-[32px] bg-gradient-to-b from-[#F3E2C7] to-[#E9D2AE] shadow-warm">
-              <span className="absolute left-6 top-6 text-2xl opacity-70">🪔</span>
-              <span className="absolute right-6 top-6 text-2xl opacity-70">🪟</span>
-              <div className="flex items-end gap-8">
-                <div className="flex flex-col items-center gap-1">
+            <div className="relative flex h-80 w-full max-w-xs flex-col items-center overflow-hidden rounded-[32px] bg-gradient-to-b from-[#F3E2C7] to-[#E9D2AE] shadow-warm">
+              {/* ambient warm light */}
+              <div
+                className="pointer-events-none absolute inset-x-0 top-0 h-32"
+                style={{ background: 'radial-gradient(ellipse 70% 100% at 50% 0%, rgba(245,166,35,0.25), transparent 70%)' }}
+              />
+              <div className="arch-shape absolute left-6 top-5 h-12 w-9 bg-gradient-to-b from-white/60 to-[#A9D6E5]/50" />
+              <span className="absolute right-7 top-6 animate-diya text-2xl">🪔</span>
+
+              <div className="mt-16 flex flex-1 items-end gap-10">
+                <div className="flex flex-col items-center gap-1.5">
                   <span className="text-5xl">🧕🏽</span>
-                  <span className="text-[10px] font-medium text-[#5b4636]">You</span>
+                  <span className="h-2.5 w-14 rounded-[50%] bg-terracotta/40 blur-[1px]" />
+                  <span className="font-display text-[10px] font-semibold text-[#5b4636]">You</span>
                 </div>
-                <div className="flex flex-col items-center gap-1">
+                <div className="flex flex-col items-center gap-1.5">
                   <span className="text-5xl">{member.emoji}</span>
-                  <span className="text-[10px] font-medium text-[#5b4636]">{member.name}</span>
+                  <span className="h-2.5 w-14 rounded-[50%] bg-purple/30 blur-[1px]" />
+                  <span className="font-display text-[10px] font-semibold text-[#5b4636]">{member.name}</span>
                 </div>
               </div>
-              <span className="absolute bottom-4 rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-[#5b4636]">
+
+              {/* woven rug floor */}
+              <div
+                className="mt-3 h-8 w-full"
+                style={{
+                  background:
+                    'repeating-linear-gradient(90deg, rgba(193,123,90,0.35) 0px, rgba(193,123,90,0.35) 10px, rgba(212,160,23,0.3) 10px, rgba(212,160,23,0.3) 20px)',
+                }}
+              />
+
+              <span className="absolute bottom-4 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-[#5b4636] shadow-sm">
                 {timer}
               </span>
             </div>

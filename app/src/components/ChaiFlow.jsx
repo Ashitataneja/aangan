@@ -56,8 +56,9 @@ export default function ChaiFlow() {
   };
 
   return (
-    <Screen className="bg-gradient-to-b from-[#FDE8C8] to-cream">
-      <div className="flex items-center gap-3 px-5 pt-6">
+    <Screen className="relative overflow-hidden bg-gradient-to-b from-[#FDE8C8] to-cream">
+      <span className="pointer-events-none absolute right-5 top-16 animate-sway-slow text-xl opacity-30">🌿</span>
+      <div className="relative flex items-center gap-3 px-5 pt-6">
         <button
           onClick={() => navigate('/')}
           className="flex h-9 w-9 items-center justify-center rounded-full bg-white/70 text-[#5b4636] shadow-sm"
@@ -106,12 +107,13 @@ export default function ChaiFlow() {
             </p>
 
             <div className="mt-6 grid grid-cols-5 gap-3">
-              {family.map((m) => {
+              {family.map((m, i) => {
                 const isPresent = chowk.present.includes(m.id);
+                const blobs = ['blob-a', 'blob-b', 'blob-c', 'blob-d', 'blob-b'];
                 return (
                   <div key={m.id} className="flex flex-col items-center gap-1">
                     <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-full text-lg ${
+                      className={`${blobs[i % blobs.length]} flex h-10 w-10 items-center justify-center text-lg ${
                         isPresent ? 'bg-gold/25 animate-pulse-glow-soft' : 'bg-white/60 opacity-60'
                       }`}
                     >
@@ -154,22 +156,32 @@ export default function ChaiFlow() {
             animate={{ opacity: 1, scale: 1 }}
             className="mt-4 flex flex-col items-center px-6"
           >
-            <div className="relative flex h-64 w-full max-w-xs flex-col items-center justify-center gap-4 rounded-[32px] bg-gradient-to-b from-[#F3E2C7] to-[#E9D2AE] shadow-warm">
-              <span className="absolute top-4 text-2xl">🔥</span>
-              <div className="mt-8 flex items-end gap-6">
+            <div className="relative flex h-72 w-full max-w-xs flex-col items-center overflow-hidden rounded-[32px] bg-gradient-to-b from-[#F3E2C7] to-[#E9D2AE] shadow-warm">
+              <div
+                className="pointer-events-none absolute inset-x-0 top-0 h-28"
+                style={{ background: 'radial-gradient(ellipse 70% 100% at 50% 0%, rgba(245,166,35,0.3), transparent 70%)' }}
+              />
+              <div className="mt-14 flex flex-1 items-end gap-6">
                 {presentMembers.map((m) => (
                   <motion.div
                     key={m.id}
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="flex flex-col items-center gap-1"
+                    className="flex flex-col items-center gap-1.5"
                   >
                     <span className="text-4xl">{AVATARS[m.id] ?? '🧑🏽'}</span>
-                    <span className="text-[10px] font-medium text-[#5b4636]">{m.name}</span>
+                    <span className="h-2.5 w-12 rounded-[50%] bg-terracotta/40 blur-[1px]" />
+                    <span className="font-display text-[10px] font-semibold text-[#5b4636]">{m.name}</span>
                   </motion.div>
                 ))}
               </div>
-              <div className="mt-2 flex items-end gap-1">
+
+              <div className="relative -mt-2 mb-3 flex h-14 w-14 items-center justify-center">
+                <span className="absolute h-10 w-10 animate-pulse-glow-soft rounded-full bg-saffron/40 blur-md" />
+                <span className="relative text-3xl">🔥</span>
+              </div>
+
+              <div className="flex items-end gap-1 pb-2">
                 {[0, 1, 2, 3, 4].map((i) => (
                   <span
                     key={i}
@@ -178,6 +190,15 @@ export default function ChaiFlow() {
                   />
                 ))}
               </div>
+
+              {/* woven mat floor */}
+              <div
+                className="h-6 w-full"
+                style={{
+                  background:
+                    'repeating-linear-gradient(90deg, rgba(193,123,90,0.3) 0px, rgba(193,123,90,0.3) 10px, rgba(212,160,23,0.25) 10px, rgba(212,160,23,0.25) 20px)',
+                }}
+              />
             </div>
 
             <p className="mt-4 text-center text-xs text-[#8a7767]">

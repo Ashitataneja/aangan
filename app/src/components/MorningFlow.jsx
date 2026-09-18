@@ -5,6 +5,13 @@ import { useVillage } from '../state/VillageContext';
 import { deitiesByDay, getToday } from '../data/family';
 import Screen from './Screen';
 
+const PETALS = [
+  { emoji: '🌼', left: '18%', delay: 0, drift: '18px' },
+  { emoji: '🪷', left: '68%', delay: 1.4, drift: '-14px' },
+  { emoji: '🌼', left: '42%', delay: 2.7, drift: '10px' },
+  { emoji: '🪷', left: '80%', delay: 0.8, drift: '-20px' },
+];
+
 export default function MorningFlow() {
   const navigate = useNavigate();
   const { user, family, mandirSharedToday, shareMandir } = useVillage();
@@ -12,6 +19,7 @@ export default function MorningFlow() {
 
   const today = getToday();
   const deity = deitiesByDay[today];
+  const blobs = ['blob-a', 'blob-b', 'blob-c', 'blob-d', 'blob-b'];
 
   const handleShare = () => {
     shareMandir();
@@ -19,8 +27,28 @@ export default function MorningFlow() {
   };
 
   return (
-    <Screen className="bg-gradient-to-b from-[#3D2A5C] via-[#6B3FA0]/90 to-cream">
-      <div className="flex items-center gap-3 px-5 pt-6">
+    <Screen className="relative overflow-hidden bg-gradient-to-b from-[#241736] via-[#5B3690] to-cream">
+      {/* starfield / temple night sky */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-72 opacity-70">
+        <span className="absolute left-[12%] top-8 h-1 w-1 animate-twinkle rounded-full bg-white" />
+        <span className="absolute left-[76%] top-16 h-1 w-1 animate-twinkle rounded-full bg-white" style={{ animationDelay: '0.6s' }} />
+        <span className="absolute left-[52%] top-6 h-[3px] w-[3px] animate-twinkle rounded-full bg-white" style={{ animationDelay: '1.2s' }} />
+        <span className="absolute left-[30%] top-24 h-1 w-1 animate-twinkle rounded-full bg-white" style={{ animationDelay: '1.8s' }} />
+        <span className="absolute left-[88%] top-28 h-[3px] w-[3px] animate-twinkle rounded-full bg-white" style={{ animationDelay: '0.3s' }} />
+      </div>
+
+      {!shared &&
+        PETALS.map((p, i) => (
+          <span
+            key={i}
+            className="animate-float-up pointer-events-none absolute bottom-24 text-lg"
+            style={{ left: p.left, animationDelay: `${p.delay}s`, '--drift': p.drift }}
+          >
+            {p.emoji}
+          </span>
+        ))}
+
+      <div className="relative flex items-center gap-3 px-5 pt-6">
         <button
           onClick={() => navigate('/')}
           className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white"
@@ -38,20 +66,25 @@ export default function MorningFlow() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.4 }}
-            className="mt-4 flex flex-col items-center px-6"
+            className="relative mt-4 flex flex-col items-center px-6"
           >
             <p className="font-display text-lg font-semibold text-white">
               {deity.greeting}, {user.greetingName} 🙏
             </p>
             <p className="mt-1 text-xs text-white/70">{today} · {deity.name} ka din</p>
 
-            <div className="relative mt-8 flex h-56 w-56 items-center justify-center">
+            <div className="relative mt-8 flex h-64 w-64 items-center justify-center">
               <div
-                className="absolute inset-0 animate-pulse-glow rounded-full"
+                className="arch-shape absolute inset-0"
+                style={{ background: `linear-gradient(180deg, ${deity.color}3d, transparent 70%)` }}
+              />
+              <div className="sunburst animate-spin-slow absolute h-52 w-52 rounded-full opacity-40" />
+              <div
+                className="absolute h-56 w-56 rounded-full animate-pulse-glow"
                 style={{ boxShadow: `0 0 60px 20px ${deity.color}55` }}
               />
               <div
-                className="flex h-48 w-48 items-center justify-center rounded-full text-8xl shadow-glow"
+                className="relative flex h-48 w-48 items-center justify-center rounded-full text-8xl shadow-glow ring-4 ring-white/30"
                 style={{ background: `radial-gradient(circle, ${deity.color}33, #FDF6EC 70%)` }}
               >
                 {deity.emoji}
@@ -92,25 +125,29 @@ export default function MorningFlow() {
               Diyas are lighting up across the village, house by house.
             </p>
 
-            <div className="mt-8 grid w-full max-w-xs grid-cols-3 gap-4">
+            <div className="mt-8 grid w-full max-w-xs grid-cols-3 gap-x-4 gap-y-5">
               {family.map((m, i) => (
                 <motion.div
                   key={m.id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 * i, duration: 0.4 }}
-                  className="flex flex-col items-center gap-1 rounded-2xl bg-white/70 py-3 shadow-warm"
+                  className="flex flex-col items-center gap-1"
                 >
-                  <span className="text-2xl">{m.houseEmoji}</span>
+                  <div
+                    className={`${blobs[i % blobs.length]} flex h-14 w-14 items-center justify-center bg-gradient-to-b from-white/90 to-white/60 text-2xl shadow-warm`}
+                  >
+                    {m.houseEmoji}
+                  </div>
                   <motion.span
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.15 * i + 0.2 }}
-                    className="animate-diya text-lg"
+                    className="animate-diya -mt-1 text-lg"
                   >
                     🪔
                   </motion.span>
-                  <span className="text-[10px] font-medium text-[#5b4636]">{m.name}</span>
+                  <span className="font-display text-[10px] font-semibold text-white">{m.name}</span>
                 </motion.div>
               ))}
             </div>
