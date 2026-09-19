@@ -7,7 +7,7 @@ export default function Screen({ children, className = '' }) {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 1.04, y: -12 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className={`min-h-full w-full pb-28 ${className}`}
+      className={`flex min-h-screen w-full flex-col pb-28 ${className}`}
     >
       {children}
     </motion.div>

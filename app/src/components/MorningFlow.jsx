@@ -60,6 +60,7 @@ export default function MorningFlow() {
       </div>
       <WaveDivider color="#F5A623" className="relative mt-3" />
 
+      <div className="relative flex flex-1 flex-col items-center justify-center px-6 pb-10">
       <AnimatePresence mode="wait">
         {!shared ? (
           <motion.div
@@ -68,7 +69,7 @@ export default function MorningFlow() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.4 }}
-            className="relative mt-4 flex flex-col items-center px-6"
+            className="relative flex flex-col items-center"
           >
             <p className="font-display text-lg font-semibold text-white">
               {deity.greeting}, {user.greetingName} 🙏
@@ -118,7 +119,7 @@ export default function MorningFlow() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 flex flex-col items-center px-6"
+            className="flex flex-col items-center"
           >
             <p className="font-display text-lg font-semibold text-white">
               Your blessing has reached everyone 🌼
@@ -163,6 +164,7 @@ export default function MorningFlow() {
           </motion.div>
         )}
       </AnimatePresence>
+      </div>
     </Screen>
   );
 }

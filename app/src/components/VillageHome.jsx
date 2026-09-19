@@ -93,7 +93,7 @@ function HouseNode({ member, onTap }) {
         <span className="-mt-1.5 h-2 w-9 rounded-full ground-shadow" />
       </div>
       <Garden state={member.gardenState} />
-      <span className="max-w-[72px] truncate font-display text-xs font-bold text-[#4a3527]">
+      <span className="max-w-[88px] truncate font-display text-[11px] font-bold text-[#4a3527]">
         {member.name}
       </span>
     </button>

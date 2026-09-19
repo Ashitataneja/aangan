@@ -70,6 +70,7 @@ export default function ChaiFlow() {
       </div>
       <WaveDivider color="#F5A623" className="relative mt-3" />
 
+      <div className="relative flex flex-1 flex-col items-center justify-center px-6 pb-10">
       <AnimatePresence mode="wait">
         {step === 'kettle' && (
           <motion.div
@@ -77,7 +78,7 @@ export default function ChaiFlow() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="mt-14 flex flex-col items-center px-6"
+            className="flex flex-col items-center"
           >
             <div className="sticker relative flex h-32 w-32 items-center justify-center rounded-full bg-saffron/20">
               <span className="text-6xl">🫖</span>
@@ -99,7 +100,7 @@ export default function ChaiFlow() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="mt-6 flex flex-col items-center px-6"
+            className="flex flex-col items-center"
           >
             <div className="sticker relative flex h-24 w-24 items-center justify-center rounded-full bg-saffron/25 animate-pulse-glow-soft">
               <span className="text-5xl">🫖</span>
@@ -156,7 +157,7 @@ export default function ChaiFlow() {
             key="together"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="mt-4 flex flex-col items-center px-6"
+            className="flex flex-col items-center"
           >
             <div className="relative flex h-72 w-full max-w-xs flex-col items-center overflow-hidden rounded-[32px] bg-gradient-to-b from-[#F3E2C7] to-[#E9D2AE] shadow-warm">
               <div
@@ -178,9 +179,9 @@ export default function ChaiFlow() {
                 ))}
               </div>
 
-              <div className="relative -mt-2 mb-3 flex h-14 w-14 items-center justify-center">
-                <span className="absolute h-10 w-10 animate-pulse-glow-soft rounded-full bg-saffron/40 blur-md" />
-                <span className="relative text-3xl">🔥</span>
+              <div className="relative -mt-2 mb-3 flex h-16 w-16 items-center justify-center">
+                <span className="absolute h-14 w-14 animate-pulse-glow-soft rounded-full bg-saffron/60 blur-lg" />
+                <span className="relative text-3xl drop-shadow-[0_0_8px_rgba(245,166,35,0.8)]">🔥</span>
               </div>
 
               <div className="flex items-end gap-1 pb-2">
@@ -221,7 +222,7 @@ export default function ChaiFlow() {
             key="left"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-14 flex flex-col items-center px-6"
+            className="flex flex-col items-center"
           >
             <div className="sticker flex h-24 w-24 items-center justify-center rounded-full bg-saffron/20 text-5xl animate-pulse-glow-soft">
               🫖
@@ -239,6 +240,7 @@ export default function ChaiFlow() {
           </motion.div>
         )}
       </AnimatePresence>
+      </div>
     </Screen>
   );
 }

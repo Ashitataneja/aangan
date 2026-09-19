@@ -20,7 +20,7 @@ export default function Profile() {
       </div>
       <WaveDivider color="#6B3FA0" className="mt-3" />
 
-      <div className="mt-8 flex flex-col items-center px-6">
+      <div className="relative flex flex-1 flex-col items-center justify-center px-6 py-6">
         <div className="relative flex flex-col items-center">
           <div className="sticker blob-c flex h-24 w-24 items-center justify-center bg-gradient-to-b from-[#F6E3C4] to-terracotta/40 text-5xl">
             🧕🏽

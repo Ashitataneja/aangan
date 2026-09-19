@@ -61,6 +61,7 @@ export default function KnockFlow() {
       </div>
       <WaveDivider color="#C17B5A" className="relative mt-3" />
 
+      <div className="relative flex flex-1 flex-col items-center justify-center px-6 pb-10">
       <AnimatePresence mode="wait">
         {(step === 'exterior' || step === 'knocking') && (
           <motion.div
@@ -68,7 +69,7 @@ export default function KnockFlow() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="mt-4 flex flex-col items-center px-6"
+            className="flex flex-col items-center"
           >
             <div
               className={`sticker blob-b flex h-24 w-32 items-center justify-center text-4xl ${
@@ -112,7 +113,7 @@ export default function KnockFlow() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="mt-16 flex flex-col items-center px-6"
+            className="flex flex-col items-center"
           >
             <div className="sticker blob-b relative flex h-32 w-32 items-center justify-center bg-terracotta/20 animate-pulse-glow-soft">
               <span className="text-6xl">🚪</span>
@@ -130,7 +131,7 @@ export default function KnockFlow() {
             key="connected"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="mt-4 flex flex-col items-center px-6"
+            className="flex flex-col items-center"
           >
             <div className="relative flex h-80 w-full max-w-xs flex-col items-center overflow-hidden rounded-[32px] bg-gradient-to-b from-[#F3E2C7] to-[#E9D2AE] shadow-warm">
               {/* ambient warm light */}
@@ -138,7 +139,10 @@ export default function KnockFlow() {
                 className="pointer-events-none absolute inset-x-0 top-0 h-32"
                 style={{ background: 'radial-gradient(ellipse 70% 100% at 50% 0%, rgba(245,166,35,0.25), transparent 70%)' }}
               />
-              <div className="arch-shape absolute left-6 top-5 h-12 w-9 bg-gradient-to-b from-white/60 to-[#A9D6E5]/50" />
+              <div className="arch-shape absolute left-6 top-5 h-12 w-9 overflow-hidden bg-gradient-to-b from-white/70 to-[#A9D6E5]/50">
+                <span className="absolute inset-x-0 top-1/2 h-[1.5px] -translate-y-1/2 bg-white/70" />
+                <span className="absolute inset-y-0 left-1/2 w-[1.5px] -translate-x-1/2 bg-white/70" />
+              </div>
               <span className="absolute right-7 top-6 animate-diya text-2xl">🪔</span>
 
               <div className="mt-16 flex flex-1 items-end gap-10">
@@ -196,7 +200,7 @@ export default function KnockFlow() {
             key="ended"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-10 flex flex-col items-center px-6"
+            className="flex flex-col items-center"
           >
             <motion.div
               initial={{ scale: 0.7 }}
@@ -218,6 +222,7 @@ export default function KnockFlow() {
           </motion.div>
         )}
       </AnimatePresence>
+      </div>
     </Screen>
   );
 }
